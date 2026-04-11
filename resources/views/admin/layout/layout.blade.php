@@ -17,7 +17,7 @@
       content="bootstrap 5, bootstrap, bootstrap 5 admin dashboard, bootstrap 5 dashboard, bootstrap 5 charts, bootstrap 5 calendar, bootstrap 5 datepicker, bootstrap 5 tables, bootstrap 5 datatable, vanilla js datatable, colorlibhq, colorlibhq dashboard, colorlibhq admin dashboard"
     />
     <!--end::Primary Meta Tags-->
-    @include('admin.layout.style')
+    @include('admin.layout.styles')
   </head>
   <!--end::Head-->
   <!--begin::Body-->
@@ -39,7 +39,7 @@
     </div>
     <!--end::App Wrapper-->
     <!--begin::Script-->
-    @include('admin.layout.script')
+    @include('admin.layout.scripts')
    
     <!--end::Script-->
   </body>
