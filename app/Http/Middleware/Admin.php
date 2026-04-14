@@ -16,9 +16,11 @@ class Admin
      */
     public function handle(Request $request, Closure $next): Response
     {
-        if(!Auth::guard('admin')->check()){
-            return redirect('/admin/login');
+        if(!Auth::guard('admin')->check()) //this line asks if  the user is not logged in using admin guard
+        // admin middleware checks if the request is authenticated with the admin guard.
+        {
+            return redirect('/admin/login'); // if yes
         }
-        return $next($request);
+        return $next($request); // if no (lets the request continue to the controller.)
     }
 }
