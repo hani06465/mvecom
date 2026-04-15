@@ -15,6 +15,8 @@ Route::get('/', function () {
 Route::prefix('admin')->group(function () {
     //show login from
     Route::get('login', [AdminController::class, 'create'])->name('admin.login');
+    // Handle login form submission (we created it to handle login form submission)
+    Route::post('login',[AdminController::class, 'store'])->name('admin.login.request');
     //Dashboard route
     // i avoid this usage and i enserted this beacuse i want first to loging the admin before access it or it restricts from direct acess.
    //Route::resource('dashboard', AdminController::class)->only(['index']);
