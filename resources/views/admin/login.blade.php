@@ -65,7 +65,14 @@
                 <strong>Error:</strong>{{Session::get('error_message')}}
                 <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="close"></button>
               </div>
-            @endif
+          @endif
+
+          @foreach($errors->all() as $error)
+            <div class="alert alert-danger alert-dismissible fade show" role="alert">
+              <strong>Error!</strong> {!! $error !!}
+              <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+            </div>
+            @endforeach
           <form action="{{ route('admin.login.request') }}" method="post">@csrf
             <div class="input-group mb-1">
               <div class="form-floating">
