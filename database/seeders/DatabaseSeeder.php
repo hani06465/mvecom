@@ -1,4 +1,5 @@
 <?php
+// after we create the file adminstableseeder.php we have to update this file
 
 namespace Database\Seeders;
 
@@ -21,5 +22,6 @@ class DatabaseSeeder extends Seeder
             'name' => 'Test User',
             'email' => 'test@example.com',
         ]);
+        $this->call(AdminsTableseeder::class);
     }
 }
