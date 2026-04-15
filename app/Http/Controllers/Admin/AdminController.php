@@ -70,6 +70,7 @@ class AdminController extends Controller
      */
     public function destroy(Admin $admin)
     {
-        //
+        Auth::guard('admin')->logout(); // clears the session for the 'admin' guard. logs out the currently loged in admin
+        return redirect()->route('admin.login');
     }
 }

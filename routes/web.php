@@ -25,6 +25,7 @@ Route::prefix('admin')->group(function () {
     //Dashboard
     // we then enter the dashboard route to this beacause we need first to  loginig first.
     Route::resource('dashboard',AdminController::class)->only(['index']);
+    Route::get('logout', [AdminController::class, 'destroy'])->name('admin.logout');
    });
 });
 

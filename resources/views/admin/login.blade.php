@@ -60,6 +60,12 @@
         </div>
         <div class="card-body login-card-body">
           <p class="login-box-msg">Sign in to start your session</p>
+          @if(Session::has('error_message'))
+              <div class="alert alert-danger alert-dismissible fade show" role="alert">
+                <strong>Error:</strong>{{Session::get('error_message')}}
+                <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="close"></button>
+              </div>
+            @endif
           <form action="{{ route('admin.login.request') }}" method="post">@csrf
             <div class="input-group mb-1">
               <div class="form-floating">
