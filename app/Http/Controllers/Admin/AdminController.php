@@ -5,10 +5,14 @@ namespace App\Http\Controllers\Admin;
 use App\Http\Controllers\Controller;
 use App\Models\Admin;
 use Illuminate\Http\Request;
-// we have to add this or import this to use the "Auth"
-use Auth;
+
 // we include login request here
 use App\Http\Requests\Admin\LoginRequest;
+// we include this for using service for the all admin staff
+use App\Services\Admin\AdminService;
+
+// we have to add this or import this to use the "Auth"
+use Auth;
 
 
 
@@ -37,7 +41,9 @@ class AdminController extends Controller
     public function store(LoginRequest $request)
     {
         $data = $request->all(); // collects all the input data from the login form in to data array.
-            if(Auth::guard('admin')->attempt(['email'=>$data['email'],'password'=>$data['password']]))
+        $service = new AdminService();
+        $loginStatus = $service->login($data);
+            if($loginStatus == 1)
                 {
                     return redirect('admin/dashboard');
                 }else {
