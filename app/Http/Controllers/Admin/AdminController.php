@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Admin;
 use App\Http\Controllers\Controller;
 use App\Models\Admin;
 use Illuminate\Http\Request;
+use Session;
 
 // we include login request here
 use App\Http\Requests\Admin\LoginRequest;
@@ -64,7 +65,8 @@ class AdminController extends Controller
      */
     public function edit(Admin $admin)
     {
-        //
+        Session::put('page','update-password');
+        return view('admin.update_password');
     }
 
     /**
