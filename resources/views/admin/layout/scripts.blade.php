@@ -245,3 +245,17 @@
       const sparkline3 = new ApexCharts(document.querySelector('#sparkline-3'), option_sparkline3);
       sparkline3.render();
     </script>
+    <!-- jQery CDN -->
+    <?php /*
+        // instead of using this i download the file and save it in my project and connect it
+        /*<script src="https://code.jquery.com/jquery-3.7.1.min.js" integrity="sha256-/JqT3SQfawRcv/BIHPThkBvs0OEvtFFmqPF/1YI/Cxo=" crossorigin="anonymous"></script>
+       */?>  
+      
+      <!-- so instead of the url we use this since we download it -->
+      <!-- jQery CDN -->
+      <script src="{{ url('admin\js\jquery-3.7.1.min.js') }}"></script>
+    
+      
+       
+     <!-- custom script -->
+     <script src="{{ url('admin\js\custom.js') }}"></script>

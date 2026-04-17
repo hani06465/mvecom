@@ -37,7 +37,7 @@
                 </a>
                 <ul class="nav nav-treeview">
                   <li class="nav-item">
-                    <a href="{{ url('admin/dashboard')}}" class= "nav-link {{ (Session::get('page')=='dashboard') ? 'active': ''}}">
+                    <a href="{{ url('admin/dashboard')}}" class= "nav-link {{(Session::get('page')=='dashboard') ? 'active': '' }}" >
                       <i class="nav-icon bi bi-circle"></i>
                       <p>Dashboard</p>
                     </a>

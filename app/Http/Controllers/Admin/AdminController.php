@@ -14,16 +14,26 @@ use App\Services\Admin\AdminService;
 
 // we have to add this or import this to use the "Auth"
 use Auth;
+// add for the update password;
+use Illuminate\Validation\Rules\Password;
 
 
 
 class AdminController extends Controller
 {
+    protected $adminService;
+     // inject AdminService using Constructor
+    public function __construct(AdminService $adminService)
+    {  
+        // this will help us intead of creating object in each function we simply use this:
+        $this->adminService = $adminService;
+    }
     /**
      * Display a listing of the resource.
      */
     public function index()
-    {
+    {   
+        Session::put('page','dashboard');
         return view('admin.dashboard');
     }
 
@@ -42,9 +52,9 @@ class AdminController extends Controller
     public function store(LoginRequest $request)
     {
         $data = $request->all(); // collects all the input data from the login form in to data array.
-        $service = new AdminService();
-        $loginStatus = $service->login($data);
-            if($loginStatus == 1)
+       // $service = new AdminService(); // this is not neccessary since we create as constructor the adminservice class
+        $loginStatus =$this->adminService ->login($data);
+        if($loginStatus == 1)
                 {
                     return redirect('admin/dashboard');
                 }else {
@@ -84,5 +94,12 @@ class AdminController extends Controller
     {
         Auth::guard('admin')->logout(); // clears the session for the 'admin' guard. logs out the currently loged in admin
         return redirect()->route('admin.login');
+    }
+
+    // this function we create it to do the verification:
+   public function verifyPassword(Request $request)
+    {
+     $data = $request->all();
+     return $this->adminService->verifyPassword($data);
     }
 }

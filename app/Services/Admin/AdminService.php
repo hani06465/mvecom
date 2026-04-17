@@ -1,6 +1,7 @@
 <?php
 
 namespace App\Services\Admin;
+use Hash;
 use Auth;
 
 class AdminService {
@@ -23,5 +24,16 @@ class AdminService {
         }
         return $loginStatus;
     }
+
+    public function verifyPassword($data)
+    {
+        if(Hash::check($data['current_pwd'], Auth::guard('admin')->user()->password)) {
+            return "true";
+        }else {
+            return "false";
+        }
+    }
+
+
 }
 
