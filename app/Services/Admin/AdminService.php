@@ -60,6 +60,16 @@ class AdminService {
             'message' =>  $message
         ];
     }
+   
+    public function updateDetails($request)
+        {
+    $data = $request->all();
+    // Update Admin Details
+    Admin::where('email', Auth::guard('admin')->user()->email)->update([
+        'name'   => $data['name'],
+        'mobile' => $data['mobile']
+    ]);
+        }
 
 
 }
