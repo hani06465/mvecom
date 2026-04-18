@@ -31,9 +31,33 @@
               <div class="card-title">Update Password</div>
             </div>
             <!--end::Header-->
+            @if(Session::has('error_message'))
+<div class="alert alert-danger alert-dismissible fade show m-3" role="alert">
+    <strong>Error: </strong> {{ Session::get('error_message') }}
+    <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close">
+    </button>
+</div>
+@endif
+
+@if(Session::has('success_message'))
+<div class="alert alert-success alert-dismissible fade show m-3" role="alert">
+    <strong>Success: </strong> {{ Session::get('success_message') }}
+    <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close">
+    </button>
+</div>
+@endif
+
+@foreach($errors->all() as $error)
+<div class="alert alert-danger alert-dismissible fade show m-3" role="alert">
+    <strong>Error!</strong> {!! $error !!}
+    <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close">
+    </button>
+</div>
+@endforeach
+
 
             <!--begin::Form-->
-            <form method="post" action="{{ url('admin/update-password') }}">
+            <form method="post" action="{{ route('admin.update-password.request') }}">
               @csrf
               <!--begin::Body-->
               <div class="card-body">

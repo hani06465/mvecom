@@ -9,6 +9,7 @@ use Session;
 
 // we include login request here
 use App\Http\Requests\Admin\LoginRequest;
+use App\Http\Requests\Admin\PasswordRequest;
 // we include this for using service for the all admin staff
 use App\Services\Admin\AdminService;
 
@@ -101,5 +102,17 @@ class AdminController extends Controller
     {
      $data = $request->all();
      return $this->adminService->verifyPassword($data);
+    }
+
+    // update password
+    // the class PasswordRequest is the class we created in the request:
+    public function updatePasswordRequest(PasswordRequest $request){
+        $data = $request->all();
+        $pwdStatus = $this->adminService->updatePassword($data);
+        if($pwdStatus['status'] == "success"){
+            return redirect()->back()->with('success_message',$pwdStatus['message']);
+        } else {
+            return redirect()->back()->with('error_message',$pwdStatus['message']);
+        }
     }
 }

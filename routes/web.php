@@ -25,10 +25,12 @@ Route::prefix('admin')->group(function () {
     //Dashboard
     // we then enter the dashboard route to this beacause we need first to  loginig first.
     Route::resource('dashboard',AdminController::class)->only(['index']);
-    // Admin edit his password or update password route
+    // Display update password page 
     Route::get('update-password', [AdminController::class, 'edit'])->name('admin.update-password');
     // Admin verify password 
     Route::post('verify-password',[AdminController::class, 'verifyPassword'])->name('admin.verify.password');
+    // update password route
+     Route::post('admin/update-password',[AdminController::class, 'updatePasswordRequest'])->name('admin.update-password.request');
     //Admin logout
     Route::get('logout', [AdminController::class, 'destroy'])->name('admin.logout');
    });
