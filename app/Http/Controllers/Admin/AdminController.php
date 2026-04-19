@@ -129,5 +129,14 @@ class AdminController extends Controller
             return redirect()->back()->with('success_message','AdminDetails have been updated successfully!');
         }
     }
+
+    //deletes profile picture
+
+    public function deleteProfileImage(Request $request)
+{
+    $status = $this->adminService->deleteProfileImage($request->admin_id);
+    return response()->json($status);
+}
+ 
     
 }

@@ -35,6 +35,8 @@ Route::prefix('admin')->group(function () {
     Route::get('update-details',[AdminController::class,'editDetails'])->name('admin.update-details');
     // Update Admin Details Route
     Route::post('update-details',[AdminController::class, 'updateDetails'])->name('admin.update-details.request');
+    // Delete profile picture
+    Route::post('delete-profile-image',[AdminController::class,'deleteProfileImage']);
 
     //Admin logout
     Route::get('logout', [AdminController::class, 'destroy'])->name('admin.logout');

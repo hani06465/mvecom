@@ -24,7 +24,8 @@ class DetailRequest extends FormRequest
         {
             return [
                 'name'   => 'required|regex:/^[\pL\s\-]+$/u|max:255',
-                'mobile' => 'required|numeric|digits:10'
+                'mobile' => 'required|numeric|digits:10',
+                'image' => 'image'
                 ];
         }
 
@@ -36,7 +37,8 @@ class DetailRequest extends FormRequest
             'name.max'      => "Valid Name is required",
             'mobile.required' => "Mobile is required",
             'mobile.numeric'  => "Valid Mobile is required",
-            'mobile.digits'   => "Valid Mobile is required"
+            'mobile.digits'   => "Valid Mobile is required",
+            'image.image'   =>'Valid Image is required'
              ];
         }
 
